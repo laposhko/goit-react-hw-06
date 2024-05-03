@@ -1,10 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// export const changeFilter = createAction("filter/setFilter");
-
-// export const filterReducer = createReducer({ name: "" }, (builder) => {
-//   builder.addCase(changeFilter, (state, action) => {
-//   });
-// });
 
 export const filterSlice = createSlice({
   name: "filter",
