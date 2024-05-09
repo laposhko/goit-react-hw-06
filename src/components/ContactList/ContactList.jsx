@@ -2,9 +2,9 @@ import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 import { selectContacts, selectNameFilter } from "../../redux/selectors";
-
 export default function ContactList({ onDelete }) {
   const contacts = useSelector(selectContacts);
+  console.log(contacts);
   const filter = useSelector(selectNameFilter);
   const visibleContacts = contacts.filter(
     (contact) =>
