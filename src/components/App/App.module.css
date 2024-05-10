@@ -5,3 +5,9 @@
   gap: 35px;
   padding: 40px;
 }
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,23 +1,39 @@
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
+import { ThreeDots } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import { selectContacts, selectNameFilter } from "../../redux/selectors";
-export default function ContactList({ onDelete }) {
-  const contacts = useSelector(selectContacts);
-  console.log(contacts);
-  const filter = useSelector(selectNameFilter);
-  const visibleContacts = contacts.filter(
-    (contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-      contact.number.toLowerCase().includes(filter.toLowerCase())
-  );
+import {
+  selectContactLoader,
+  selectVisibleContacts,
+} from "../../redux/selectors";
+export default function ContactList() {
+  // const contacts = useSelector(selectContacts);
+  // const filter = useSelector(selectNameFilter);
+  const isLoading = useSelector(selectContactLoader);
+  const visibleContacts = useSelector(selectVisibleContacts);
   return (
-    <ul className={css.list}>
-      {visibleContacts.map((contact) => (
-        <li key={contact.id}>
-          <Contact data={contact} onDelete={onDelete} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className={css.list}>
+        {visibleContacts.map((contact) => (
+          <li key={contact.id}>
+            <Contact data={contact} />
+          </li>
+        ))}
+      </ul>
+      {isLoading && (
+        <div className={css.loader}>
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#007bff"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
+      )}
+    </>
   );
 }
