@@ -11,7 +11,6 @@ export const selectContactDeleter = (state) => state.contacts.loading.deleting;
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
-    console.log("ssss");
     return contacts.filter(
       (contact) =>
         contact.name.toLowerCase().includes(filter.toLowerCase()) ||
@@ -19,13 +18,3 @@ export const selectVisibleContacts = createSelector(
     );
   }
 );
-// export const selectVisibleContacts = (state) => {
-//   const contacts = selectContacts(state);
-//   const filter = selectNameFilter(state);
-//   console.log("dddd");
-//   return contacts.filter(
-//     (contact) =>
-//       contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-//       contact.number.toLowerCase().includes(filter.toLowerCase())
-//   );
-// };
